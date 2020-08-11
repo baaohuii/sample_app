@@ -3,6 +3,9 @@ links:
     home_page: https://www.railstutorial.org/
     help_page: https://www.railstutorial.org/help
     book_page: https://www.railstutorial.org/book
+  gravatar:
+    emails: https://gravatar.com/emails
+    secure: https://secure.gravatar.com/avatar
 
 validations:
   name:
@@ -15,3 +18,4 @@ validations:
 
 true: 1
 false: 0
+gravatar_size: 50
