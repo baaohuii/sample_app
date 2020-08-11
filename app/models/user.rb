@@ -9,20 +9,22 @@ class User < ApplicationRecord
   validates :email, presence: true,
             length: {maximum: Settings.validations.email.max_length},
             format: {with: Settings.validations.email.regex},
-            uniqueness: {case_sensitive: true}
+            uniqueness: true
 
   validates :password, presence: true,
-            length: {minimum: Settings.validations.password.min_length}, allow_nil: true
-  
-  validates :image, content_type: { in: Settings.validations.photo.format_type,
-             message: "must be a valid image format" },
-             size: { less_than: Settings.validations.photo.max_size_Mb .megabytes,
-             message: "should be less than 5MB" }
+            length: {minimum: Settings.validations.password.min_length}, 
+            allow_nil: true
 
   before_save :downcase_email
   before_create :create_activation_digest
   has_secure_password
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: Relationship.name,
+            foreign_key: :follower_id, dependent: :destroy
+  has_many :passive_relationships, class_name: Relationship.name,
+            foreign_key: :followed_id, dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   class << self
 
@@ -79,12 +81,24 @@ class User < ApplicationRecord
   end
   
   def feed
-    Micropost.where user_id: id
+    Micropost.where user_id: followed_ids << id
   end
   
   def display_image
     image.variant resize_to_limit: [Settings.validations.photo.resize_limit, 
                                     Settings.validations.photo.resize_limit]
+  end
+
+  def follow other_user
+    following << other_user
+  end
+
+  def unfollow other_user
+    following.delete other_user
+  end
+
+  def following? other_user
+    following.include? other_user
   end
 
   private
