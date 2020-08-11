@@ -9,8 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find_by id: params[:id]
-    redirect_to root_url and return unless FILL_IN
+  	@microposts = @user.microposts.paginate page: params[:page]
   end
 
   def new
@@ -50,7 +49,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit User::USERS_PARAMS
+    params.require(:user).permit User::USER_PARAMS
   end
 
   def logged_in_user
