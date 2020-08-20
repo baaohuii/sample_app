@@ -13,24 +13,24 @@ inherit_from:
 AllCops:
   # Include gemspec and Rakefile
   Include:
-    - 'app/**/*'
-    - 'lib/**/*'
     - '**/*.gemspec'
+    - 'app/**/*'
     - 'Gemfile'
+    - 'lib/**/*'
   Exclude:
-    - 'vendor/**/*'
-    - 'config/unicorn.rb'
-    - 'bin/*'
-    - 'db/**/*'
-    - 'spec/**/*'
-    - 'script/rails'
-    - 'config/**/*'
-    - 'app/views/**/*'
-    - 'app/assets/**/*'
-    - 'app/javascript/**/*'
-    - '.idea/**/*'
     - '**/.DS_Store'
     - '**/.keep'
+    - '.idea/**/*'
+    - 'app/assets/**/*'
+    - 'app/javascript/**/*'
+    - 'app/views/**/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'config/unicorn.rb'
+    - 'db/**/*'
+    - 'script/rails'
+    - 'spec/**/*'
+    - 'vendor/**/*'
 
 # Indent private/protected/public as deep as method definitions
 Layout/AccessModifierIndentation:
@@ -98,10 +98,10 @@ Layout/AlignHash:
   #       b: 2)
   EnforcedLastArgumentHashStyle: ignore_implicit
   SupportedLastArgumentHashStyles:
-    - always_inspect
     - always_ignore
-    - ignore_implicit
+    - always_inspect
     - ignore_explicit
+    - ignore_implicit
 
 Layout/AlignParameters:
   # Alignment of parameters in multi-line method calls.
@@ -233,9 +233,9 @@ Layout/EmptyLinesAroundModuleBody:
 
 Naming/FileName:
   Exclude:
-    - '**/Rakefile'
-    - '**/Gemfile'
     - '**/Capfile'
+    - '**/Gemfile'
+    - '**/Rakefile'
 
 # Checks use of for or each in multiline loops.
 Style/For:
@@ -249,8 +249,8 @@ Style/FormatString:
   EnforcedStyle: format
   SupportedStyles:
     - format
-    - sprintf
     - percent
+    - sprintf
 
 # Built-in global variables are allowed by default.
 Style/GlobalVars:
@@ -278,8 +278,8 @@ Layout/IndentFirstHashElement:
   # brace is.
   EnforcedStyle: special_inside_parentheses
   SupportedStyles:
-    - special_inside_parentheses
     - consistent
+    - special_inside_parentheses
 
 Style/LambdaCall:
   EnforcedStyle: call
@@ -300,8 +300,8 @@ Style/Next:
   # are ignored: [1, 2].each { |a| return 'yes' if a == 1 }
   EnforcedStyle: skip_modifier_ifs
   SupportedStyles:
-    - skip_modifier_ifs
     - always
+    - skip_modifier_ifs
 
 Style/NonNilCheck:
   # With `IncludeSemanticChanges` set to `true`, this cop reports offenses for
@@ -315,8 +315,8 @@ Style/NonNilCheck:
 Style/MethodDefParentheses:
   EnforcedStyle: require_no_parentheses
   SupportedStyles:
-    - require_parentheses
     - require_no_parentheses
+    - require_parentheses
 
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
@@ -325,8 +325,8 @@ Metrics/MethodLength:
 Naming/MethodName:
   EnforcedStyle: snake_case
   SupportedStyles:
-    - snake_case
     - camelCase
+    - snake_case
 
 Style/NumericLiterals:
   MinDigits: 5
@@ -484,8 +484,8 @@ Style/TrivialAccessors:
   # Commonly used in DSLs
   AllowDSLWriters: false
   Whitelist:
-    - to_ary
     - to_a
+    - to_ary
     - to_c
     - to_enum
     - to_h
@@ -498,8 +498,8 @@ Style/TrivialAccessors:
     - to_proc
     - to_r
     - to_regexp
-    - to_str
     - to_s
+    - to_str
     - to_sym
 
 Naming/VariableName:
