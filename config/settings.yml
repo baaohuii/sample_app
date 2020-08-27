@@ -3,3 +3,13 @@ links:
     home_page: https://www.railstutorial.org/
     help_page: https://www.railstutorial.org/help
     book_page: https://www.railstutorial.org/book
+
+validations:
+  name:
+    max_length: 50
+  email:
+    max_length: 50
+    regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
+  password:
+    min_length: 6
+    
