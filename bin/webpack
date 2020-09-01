@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-ENV%i("RAILS_ENV") ||= ENV%i("RACK_ENV") || "development"
-ENV%i("NODE_ENV")  ||= "development"
+ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
+ENV["NODE_ENV"]  ||= "development"
 
 require "pathname"
-ENV%i("BUNDLE_GEMFILE") ||= File.expand_path("../../Gemfile",
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
   Pathname.new(__FILE__).realpath)
 
 require "bundler/setup"
