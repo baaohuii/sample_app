@@ -19,3 +19,4 @@ validations:
 true: 1
 false: 0
 gravatar_size: 50
+max_hours: 2
