@@ -15,6 +15,14 @@ validations:
     regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
   password:
     min_length: 6
+  content:
+    max_length: 140  
+  photo:
+    max_size_Mb: 5
+    size: 1024
+    resize_limit: 500
+    formats: image/jpeg,image/gif,image/png
+    format_type: %w[image/jpeg image/gif image/png]
 
 true: 1
 false: 0
