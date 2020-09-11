@@ -11,8 +11,8 @@ validations:
   name:
     max_length: 50
   email:
-    max_length: 50
-    regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
+    max_length: 100
+    regex: !ruby/regexp "/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i"
   password:
     min_length: 6
   content:
@@ -21,8 +21,8 @@ validations:
     max_size_Mb: 5
     size: 1024
     resize_limit: 500
-    formats: image/jpeg,image/gif,image/png
-    format_type: %w[image/jpeg image/gif image/png]
+    formats: "image/jpeg,image/gif,image/png"
+    format_type: "/%w(image/jpeg image/gif image/png)/"
 
 true: 1
 false: 0
